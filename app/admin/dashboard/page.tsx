@@ -4,14 +4,19 @@ import {
   KPICardContent,
   KPICardHeader,
 } from '@/components/admin/dashboard/KPICard';
+import UserResultCard from '@/components/admin/dashboard/UserResultCard';
 import { Progress } from '@/components/ui/progress';
+import { cn } from '@/lib/utils';
 import { ClipboardList, TrendingUp, Users } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AdminDashboardHome() {
   return (
     <div>
       <AdminMobileHeader title="Admin Overview" />
-      <main className="p-6">
+      <main className="p-6 space-y-10">
+        {/* Quick insights */}
         <ul className="space-y-6">
           <li>
             <KPICard>
@@ -53,6 +58,110 @@ export default function AdminDashboardHome() {
             </KPICard>
           </li>
         </ul>
+        <div>
+          {/* Recent activity feed */}
+          <section>
+            <div className="flex items-center justify-between px-2 mb-6">
+              <h2 className="font-manrope font-bold text-2xl leading-8 -tracking-[0.6px] text-[#2A3439]">
+                Recent Completions
+              </h2>
+              <Link
+                href="/"
+                className="font-semibold text-sm leading-5 tracking-[0px] text-[#3C5F95]"
+              >
+                View all
+              </Link>
+            </div>
+            <ul className="space-y-4">
+              <li>
+                <UserResultCard
+                  name="James Wilson"
+                  time="2"
+                  assessment="Advanced Calculus Final"
+                  score={92}
+                />
+              </li>
+              <li>
+                <UserResultCard
+                  name="James Wilson"
+                  time="2"
+                  assessment="Advanced Calculus Final"
+                  score={92}
+                />
+              </li>
+              <li>
+                <UserResultCard
+                  name="James Wilson"
+                  time="2"
+                  assessment="Advanced Calculus Final"
+                  score={92}
+                />
+              </li>
+            </ul>
+          </section>
+
+          {/* System health and quick actions */}
+          <aside className="-mt-2">
+            <article className="bg-[#0F172A] p-8 rounded-md h-49 relative">
+              <Image
+                src="/shield.svg"
+                width={80}
+                height={100}
+                alt=""
+                aria-hidden="true"
+                className="absolute bottom-0 right-0"
+              />
+              <div className="space-y-2">
+                <h2 className="font-manrope font-bold text-lg text-white leading-7">
+                  Live Proctoring
+                </h2>
+                <p className="text-sm leading-5 text-[#94A3B8]">
+                  42 active exam rooms are currently under surveillance.
+                </p>
+                <div className="pt-4 flex items-center gap-4">
+                  <data value={12} className="-space-x-3 flex">
+                    {(() => {
+                      const cl =
+                        'rounded-[12px] border-2 border-[#0F172A] size-8 bg-[#1E293B]';
+                      return (
+                        <>
+                          <Image
+                            src="/student.png"
+                            width={32}
+                            height={32}
+                            alt=""
+                            className={cl}
+                            aria-hidden="true"
+                          />
+                          <Image
+                            src="/student.png"
+                            width={32}
+                            height={32}
+                            alt=""
+                            className={cl}
+                            aria-hidden="true"
+                          />
+                          <div
+                            className={cn(
+                              cl,
+                              'font-semibold text-white text-[10px] leading-3.75 flex items-center justify-center',
+                            )}
+                            aria-hidden="true"
+                          >
+                            +12
+                          </div>
+                        </>
+                      );
+                    })()}
+                  </data>
+                  <span className="text-[#94A3B8] text-xs leading-4">
+                    Proctors online
+                  </span>
+                </div>
+              </div>
+            </article>
+          </aside>
+        </div>
       </main>
     </div>
   );

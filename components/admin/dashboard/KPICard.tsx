@@ -38,10 +38,13 @@ export function KPICardContent({
 } & PropsWithChildren) {
   return (
     <CardContent>
-      <p className="font-manrope leading-10 -tracking-[1.8px] font-extrabold text-4xl text-[#2A3439] mb-1">
-        <data value={data}>{data.toLocaleString()}</data>
+      <data
+        value={data}
+        className="font-manrope leading-10 -tracking-[1.8px] font-extrabold text-4xl text-[#2A3439] mb-1 inline-block"
+      >
+        {data.toLocaleString()}
         {unit}
-      </p>
+      </data>
       <div className="flex items-center gap-2">
         {live && <div className="size-2 rounded-full bg-[#22C55E]"></div>}
         {children}
