@@ -16,7 +16,7 @@ export default function UserResultCard({
   score,
 }: UserResultCardProps) {
   return (
-    <article className="h-33 bg-white p-6 rounded-md grid grid-cols-[48px_1fr_45px] gap-6 items-center">
+    <article className="bg-white p-6 rounded-md grid grid-cols-[48px_1fr_45px] gap-6 items-center">
       <div>
         <Image
           src={avatar}

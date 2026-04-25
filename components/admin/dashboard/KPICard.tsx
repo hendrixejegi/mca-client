@@ -3,7 +3,7 @@ import React, { PropsWithChildren } from 'react';
 
 export function KPICard({ children }: PropsWithChildren) {
   return (
-    <Card className="p-8 bg-white ring-0 rounded-[8px] h-44 flex flex-col justify-between">
+    <Card className="p-8 bg-white ring-0 rounded-[8px] flex flex-col justify-between">
       {children}
     </Card>
   );

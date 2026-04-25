@@ -4,10 +4,11 @@ import {
   KPICardContent,
   KPICardHeader,
 } from '@/components/admin/dashboard/KPICard';
+import UpcomingExam from '@/components/admin/dashboard/UpcomingExam';
 import UserResultCard from '@/components/admin/dashboard/UserResultCard';
 import { Progress } from '@/components/ui/progress';
 import { cn } from '@/lib/utils';
-import { ClipboardList, TrendingUp, Users } from 'lucide-react';
+import { CalendarClock, ClipboardList, TrendingUp, Users } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -101,15 +102,15 @@ export default function AdminDashboardHome() {
           </section>
 
           {/* System health and quick actions */}
-          <aside className="-mt-2">
-            <article className="bg-[#0F172A] p-8 rounded-md h-49 relative">
+          <aside className="-mt-2 space-y-8">
+            <article className="bg-[#0F172A] p-8 rounded-md relative">
               <Image
                 src="/shield.svg"
                 width={80}
                 height={100}
                 alt=""
                 aria-hidden="true"
-                className="absolute bottom-0 right-0"
+                className="absolute bottom-0 right-0 w-auto"
               />
               <div className="space-y-2">
                 <h2 className="font-manrope font-bold text-lg text-white leading-7">
@@ -159,6 +160,30 @@ export default function AdminDashboardHome() {
                   </span>
                 </div>
               </div>
+            </article>
+            <article className="bg-[#F0F4F7] p-8 rounded-md space-y-4">
+              <div className="flex items-center gap-2">
+                <CalendarClock className="text-[#3C5F95]" aria-hidden="true" />
+                <h2 className="font-manrope font-bold text-lg text-[#2A3439] leading-7">
+                  Scheduled Today
+                </h2>
+              </div>
+              <ul className="space-y-4">
+                <li>
+                  <UpcomingExam
+                    exam="Psychology 101"
+                    date="09:00"
+                    candidates={450}
+                  />
+                </li>
+                <li>
+                  <UpcomingExam
+                    exam="Data Structures"
+                    date="13:30"
+                    candidates={210}
+                  />
+                </li>
+              </ul>
             </article>
           </aside>
         </div>
