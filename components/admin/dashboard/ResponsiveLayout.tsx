@@ -1,8 +1,10 @@
 'use client';
 
 import { PropsWithChildren, useEffect, useState } from 'react';
-import AdminBottomNavMobile from './AdminBottomNavMobile';
+import AdminBottomNavMobile from './mobile/AdminBottomNavMobile';
 import { useMobileScreen } from '@/components/context/ScreenSizeContext';
+import { Button } from '@/components/ui/button';
+import { Plus } from 'lucide-react';
 
 export default function ResponsiveLayout({ children }: PropsWithChildren) {
   const isMobile = useMobileScreen();
@@ -17,15 +19,26 @@ export default function ResponsiveLayout({ children }: PropsWithChildren) {
   if (!mounted) return null;
 
   if (isMobile) {
-    return (
-      <div className="bg-[#F8F9FB] h-screen overflow-y-scroll pb-26.5">
-        {children}
-        <AdminBottomNavMobile />
-      </div>
-    );
+    return <AdminMobileLayout>{children}</AdminMobileLayout>;
   }
-
   return <AdminDesktopLayout>{children}</AdminDesktopLayout>;
+}
+
+function AdminMobileLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="bg-[#F8F9FB] h-screen overflow-y-scroll pb-26.5">
+      {children}
+      <AdminBottomNavMobile />
+
+      {/* Mobile FAB (Quick Action) */}
+      <Button
+        aria-label="Quick action"
+        className="bg-[#3C5F95] size-14 rounded-[12px] fixed bottom-19 right-6 z-50"
+      >
+        <Plus aria-hidden="true" className="text-white size-3.5" />
+      </Button>
+    </div>
+  );
 }
 
 function AdminDesktopLayout({ children }: { children: React.ReactNode }) {
