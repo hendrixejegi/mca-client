@@ -1,11 +1,11 @@
 'use client';
 
-import useIsMobile from '@/hooks/useIsMobile';
 import { PropsWithChildren, useEffect, useState } from 'react';
 import AdminBottomNavMobile from './AdminBottomNavMobile';
+import { useMobileScreen } from '@/components/context/ScreenSizeContext';
 
 export default function ResponsiveLayout({ children }: PropsWithChildren) {
-  const isMobile = useIsMobile();
+  const isMobile = useMobileScreen();
 
   const [mounted, setMounted] = useState(false);
 

@@ -3,13 +3,8 @@
 import { cn } from '@/lib/utils';
 import { ClipboardList, Flag, House, LucideProps, User2 } from 'lucide-react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import {
-  ForwardRefExoticComponent,
-  ReactNode,
-  RefAttributes,
-  useState,
-} from 'react';
+import { usePathname } from 'next/navigation';
+import { ForwardRefExoticComponent, RefAttributes, useState } from 'react';
 
 const navLinks: [
   string,
