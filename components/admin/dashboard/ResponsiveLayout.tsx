@@ -5,6 +5,8 @@ import AdminBottomNavMobile from './mobile/AdminBottomNavMobile';
 import { useMobileScreen } from '@/components/context/ScreenSizeContext';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import AppSidebar from './desktop/AppSidebar';
 
 export default function ResponsiveLayout({ children }: PropsWithChildren) {
   const isMobile = useMobileScreen();
@@ -42,5 +44,15 @@ function AdminMobileLayout({ children }: { children: React.ReactNode }) {
 }
 
 function AdminDesktopLayout({ children }: { children: React.ReactNode }) {
-  return <div>{children}</div>;
+  return (
+    <div>
+      <SidebarProvider>
+        <AppSidebar />
+        <main>
+          <SidebarTrigger />
+          {children}
+        </main>
+      </SidebarProvider>
+    </div>
+  );
 }
