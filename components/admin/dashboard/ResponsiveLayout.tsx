@@ -1,12 +1,13 @@
 'use client';
 
 import { PropsWithChildren, useEffect, useState } from 'react';
-import AdminBottomNavMobile from './mobile/AdminBottomNavMobile';
+import { AdminBottomNavMobile } from './mobile/AdminBottomNavMobile';
 import { useMobileScreen } from '@/components/context/ScreenSizeContext';
 import { Button } from '@/components/ui/button';
 import { Plus } from 'lucide-react';
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
-import AppSidebar from './desktop/AppSidebar';
+import { SidebarProvider } from '@/components/ui/sidebar';
+import { AppSidebar } from './desktop/AppSidebar';
+import { AppHeader } from './desktop/AppHeader';
 
 export default function ResponsiveLayout({ children }: PropsWithChildren) {
   const isMobile = useMobileScreen();
@@ -48,8 +49,8 @@ function AdminDesktopLayout({ children }: { children: React.ReactNode }) {
     <div>
       <SidebarProvider>
         <AppSidebar />
-        <main>
-          <SidebarTrigger />
+        <main className="grow">
+          <AppHeader />
           {children}
         </main>
       </SidebarProvider>

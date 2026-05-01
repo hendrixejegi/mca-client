@@ -20,7 +20,7 @@ const navLinks: [
   ['/admin/dashboard/user', 'user', User2],
 ];
 
-export default function AdminBottomNavMobile() {
+export function AdminBottomNavMobile() {
   const pathname = usePathname();
   const [currPath, setCurrPath] = useState(pathname);
 

@@ -33,7 +33,6 @@ const links: [
   >,
 ][] = [
   // [name, link, icon]
-  ['Dashboard', '/admin/dashboard', LayoutPanelLeft],
   ['Candidate Registry', '/admin/dashboard/candidate-registry', Users],
   ['Test Management', '/admin/dashboard/test-management', FileQuestionMark],
   ['Live Proctoring', '/admin/dashboard/live-proctoring', Eye],
@@ -71,12 +70,12 @@ const SidebarMenuLink = ({
   </SidebarMenuItem>
 );
 
-const AppSidebar = () => {
+export const AppSidebar = () => {
   const pathname = usePathname();
   const [currPath, setCurrPath] = useState(pathname);
 
   return (
-    <Sidebar className="px-4 py-6 bg-[#F1F5F9] *:bg-[#F1F5F9] space-y-4">
+    <Sidebar className="px-4 py-6 bg-[#F1F5F9] *:bg-[#F1F5F9] space-y-4 border-none">
       <SidebarHeader>
         <div className="pb-6">
           <h2 className="font-manrope font-extrabold text-lg leading-7 text-[#1E3A8A] capitalize">
@@ -89,6 +88,12 @@ const AppSidebar = () => {
       </SidebarHeader>
       <SidebarContent className="space-y-4">
         <SidebarMenu className="space-y-2 grow">
+          <SidebarMenuLink
+            name="Dashboard"
+            path="/admin/dashboard/home/analytics"
+            Icon={LayoutPanelLeft}
+            isActive={currPath.includes('/admin/dashboard/home')}
+          />
           {links.map(([name, path, Icon]) => {
             const isActive = currPath === path;
             return (
@@ -123,5 +128,3 @@ const AppSidebar = () => {
     </Sidebar>
   );
 };
-
-export default AppSidebar;
